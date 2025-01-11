@@ -1,5 +1,6 @@
 import gleam/dynamic
-import gleam/io
+
+// import gleam/io
 import gleam/javascript/array
 import gleam/list
 import gleam/option.{type Option, None, Some}
@@ -10,7 +11,7 @@ import sketch/media
 import sketch/size
 
 // import sketch/lustre
-import sketch/lustre/element.{type Element}
+import sketch/lustre/element
 import sketch/lustre/element/html
 
 // import lustre/element/html
@@ -163,7 +164,7 @@ fn on_url_change(uri: Uri) -> Msg {
 }
 
 pub fn main() {
-  let assert Ok(cache) = sketch.cache(strategy: sketch.Ephemeral)
+  let assert Ok(cache) = sketch.cache(strategy: sketch.Persistent)
 
   sketch_lustre.node()
   |> sketch_lustre.compose(view, cache)
