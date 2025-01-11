@@ -1,0 +1,45 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches:
+  #     - master
+
+jobs:
+  build:
+    name: Build the project 
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+        
+      - name: install gleam
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27.1.2"
+          gleam-version: "1.6.3"
+          rebar3-version: "3"
+          # elixir-version: "1.15.4"
+      - run: gleam deps download 
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1.5.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 507190fcd28b888632b1f95628832c6a
+          projectName: kemo-slides
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  
