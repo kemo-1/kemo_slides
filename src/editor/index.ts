@@ -216,10 +216,10 @@ export class CollaborativeEditor extends HTMLElement {
                 }),
                 CollaborationCursor.configure({
                     provider: provider,
-                    user: {
-                        name: myName,
-                        color: myColor,
-                    },
+                    // user: {
+
+                    //     color: myColor,
+                    // },
                 }),
             ],
         })
@@ -276,12 +276,12 @@ const debouncedRevealUpdate = debounce((editor: any) => {
         //@ts-ignore
         slideNumber: function () {
             var idx = window.Reveal.getIndices();
-            var value = ["Chapter " + idx.h];
+            var value = ["القسم " + idx.h];
             if (idx.h === 0) {
                 value = [""]
             } else if (idx.v > 0) {
                 //@ts-ignore
-                value.push('Section ');
+                value.push('الجزئية ');
                 //@ts-ignore
                 value.push(idx.v);
             }
@@ -309,17 +309,17 @@ const debouncedRevealUpdate = debounce((editor: any) => {
             useTextContentForMissingTitles: true,
             hideMissingTitles: false,
             markers: true,
-            custom: [
-                {
-                    title: 'طباعة',
-                    icon: '<i class="fas fa-file-pdf"></i>',
-                    content: `    
-                <a style="text-decoration: none;" href="#?print-pdf">
-                  <h1>قم بالضغط هنا لطباعة العرض التقديمي بصيغة pdf</h1>
-                  <i class="fas fa-file-pdf"></i>
-                </a>`
-                },
-            ],
+            // custom: [
+            //     {
+            //         title: 'طباعة',
+            //         icon: '<i class="fas fa-file-pdf"></i>',
+            //         content: `    
+            //     <a style="text-decoration: none;" href="#?print-pdf">
+            //       <h1>قم بالضغط هنا لطباعة العرض التقديمي بصيغة pdf</h1>
+            //       <i class="fas fa-file-pdf"></i>
+            //     </a>`
+            //     },
+            // ],
             themes: false,
             transitions: false,
             openButton: true,
@@ -375,12 +375,12 @@ const debouncedRevealCreate = debounce((editor: any) => {
         //@ts-ignore
         slideNumber: function () {
             var idx = window.Reveal.getIndices();
-            var value = ["Chapter " + idx.h];
+            var value = ["القسم " + idx.h];
             if (idx.h === 0) {
                 value = [""]
             } else if (idx.v > 0) {
                 //@ts-ignore
-                value.push('Section ');
+                value.push('الجزئية ');
                 //@ts-ignore
                 value.push(idx.v);
             }
@@ -408,17 +408,17 @@ const debouncedRevealCreate = debounce((editor: any) => {
             useTextContentForMissingTitles: true,
             hideMissingTitles: false,
             markers: true,
-            custom: [
-                {
-                    title: 'طباعة',
-                    icon: '<i class="fas fa-file-pdf"></i>',
-                    content: `    
-                <a style="text-decoration: none;" href="#?print-pdf">
-                  <h1>قم بالضغط هنا لطباعة العرض التقديمي بصيغة pdf</h1>
-                  <i class="fas fa-file-pdf"></i>
-                </a>`
-                },
-            ],
+            // custom: [
+            //     {
+            //         title: 'طباعة',
+            //         icon: '<i class="fas fa-file-pdf"></i>',
+            //         content: `    
+            //     <a style="text-decoration: none;" href="#?print-pdf">
+            //       <h1>قم بالضغط هنا لطباعة العرض التقديمي بصيغة pdf</h1>
+            //       <i class="fas fa-file-pdf"></i>
+            //     </a>`
+            //     },
+            // ],
             themes: false,
             transitions: false,
             openButton: true,

@@ -296,38 +296,44 @@ fn view(model: Model) {
           case model.room {
             None -> {
               [
-                html.div(sketch.class([]), [], [html.text("Enter room name")]),
+                html.div(sketch.class([]), [], [
+                  html.text("قم بكتابة اسم الغرفة"),
+                ]),
                 html.input(sketch.class([]), [
                   attribute.type_("text"),
                   event.on_input(RoomNameInputChanged),
                 ]),
                 html.div(sketch.class([]), [], [
-                  html.text("Enter room password"),
+                  html.text("قم بكتابة كلمة السر"),
                 ]),
                 html.input(sketch.class([]), [
                   attribute.type_("password"),
                   event.on_input(RoomPasswordInputChanged),
                 ]),
                 html.button(sketch.class([]), [event.on_click(CreateRoom)], [
-                  html.text("create or join a room"),
+                  html.text("قم بإنشاء أو دخول غرفة"),
                 ]),
                 case model.saved_room {
                   Some(room) -> {
                     html.div(sketch.class([]), [], [
-                      html.text("Rooms"),
+                      html.text("آخر غرفة دخلتها"),
+                      html.br(sketch.class([]), []),
                       html.button(
                         sketch.class([]),
                         [event.on_click(RoomExists(room))],
                         [
-                          html.text("room name: " <> room.name),
-                          html.text("room password: " <> room.password),
+                          html.text("اسم الغرفة: \"" <> room.name <> "\""),
+                          html.br(sketch.class([]), []),
+                          html.text(
+                            "كلمة مرور الغرفة: \"" <> room.password <> "\"",
+                          ),
                         ],
                       ),
                     ])
                   }
                   None -> {
                     html.div(sketch.class([]), [], [
-                      html.text("no saved rooms found"),
+                      html.text("لا يوجد غرفة محفوظة"),
                     ])
                   }
                 },
@@ -349,26 +355,30 @@ fn view(model: Model) {
                       attribute.style([#("color", "black")]),
                     ]),
                     html.button(sketch.class([]), [event.on_click(AddNote)], [
-                      html.text("add a new note"),
+                      html.text("قم بإنشاء عرض تقديمي"),
                     ]),
                     html.div(sketch.class([]), [], [
-                      html.text("your room name is \"" <> room.name <> "\""),
+                      html.text("اسم الغرفة الحالية: \"" <> room.name <> "\""),
                     ]),
                     html.div(sketch.class([]), [], [
                       html.text(
-                        "your room password is \"" <> room.password <> "\"",
+                        "كلمة مرور الغرفة الحالية : \"" <> room.password <> "\"",
                       ),
                     ]),
                     html.div(sketch.class([]), [], [
                       html.button(sketch.class([]), [event.on_click(ExitRoom)], [
-                        html.text("exit room"),
+                        html.text("قم بالخروج من الغرفة"),
                       ]),
                     ]),
                     html.div(sketch.class([]), [], [
                       html.text(
-                        "make sure you have the same password and name on your other devices",
+                        "تأكد ان اسم الغرفة مطابق تماما في أجهزتك الأخرى",
                       ),
                     ]),
+                    html.div(sketch.class([]), [], [
+                      html.text("العروض التقديمية"),
+                    ]),
+                    html.br(sketch.class([]), []),
                   ],
                 ),
                 element.fragment(

@@ -36,7 +36,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 507190fcd28b888632b1f95628832c6a
-          command: pages deploy dist --project-name=kemo-slides
+          command: pages deploy dist --project-name=kemo-slides-ar
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
       
 
