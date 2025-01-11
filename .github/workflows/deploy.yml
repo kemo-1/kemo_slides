@@ -17,6 +17,8 @@ jobs:
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
+        with:
+          install-command: 'npm install --force'
         
       - name: install gleam
         uses: erlef/setup-beam@v1
