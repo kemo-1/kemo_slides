@@ -164,7 +164,7 @@ fn on_url_change(uri: Uri) -> Msg {
 }
 
 pub fn main() {
-  let assert Ok(cache) = sketch.cache(strategy: sketch.Persistent)
+  let assert Ok(cache) = sketch.cache(strategy: sketch.Ephemeral)
 
   sketch_lustre.node()
   |> sketch_lustre.compose(view, cache)
